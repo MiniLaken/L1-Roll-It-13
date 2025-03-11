@@ -21,3 +21,4 @@ while comp_score < game_goal and user_score < game_goal:
 
 
     # end of entire game, output final results
+    print("WE love it")
