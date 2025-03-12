@@ -10,17 +10,17 @@ def make_statement(statement, decoration):
         ends = decoration + 3
         print(f"\n{ends} {statement} {ends}")
 
-    double_user = "no"
+        double_user = "no"
 # Roll the dice for the user and note if they got a double
-    roll_one = random.randint(1, 6)
-    roll_two = random.randint(1, 6)
+roll_one = random.randint(1, 6)
+roll_two = random.randint(1, 6)
 
-    total = roll_one + roll_two
+total = roll_one + roll_two
 
-    if roll_one == roll_two:
+if roll_one == roll_two:
         double_user = "yes"
 
-    print("{} no")
+print("{} no")
 
 # return total, double_user
 
@@ -29,8 +29,8 @@ def make_statement(statement, decoration):
 
 # roll dice twice at start of round...
 
-    user_start = initial_points("user")
-    comp_start = initial_points("computer")
+user_start = initial_points("user")
+comp_start = initial_points("computer")
 
 user_points = user_start[0]
 comp_points = comp_start[0]
