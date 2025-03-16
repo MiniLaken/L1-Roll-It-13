@@ -1,7 +1,21 @@
 import random
 
 
-def initial_points(which_player):...
+def initial_points(which_player):
+    
+    double_user = "no"
+    # Roll the dice for the user and note if they got a double
+    roll_one = random.randint(1, 6)
+    roll_two = random.randint(1, 6)
+
+    total = roll_one + roll_two
+
+    if roll_one == roll_two:
+            double_user = "yes"
+
+    print(f"{which_player} rolled a {roll_one} and a {roll_two} total: {total}")
+
+    return total, double_user
 
 
 def make_statement(statement, decoration):
@@ -10,19 +24,7 @@ def make_statement(statement, decoration):
         ends = decoration + 3
         print(f"\n{ends} {statement} {ends}")
 
-        double_user = "no"
-# Roll the dice for the user and note if they got a double
-roll_one = random.randint(1, 6)
-roll_two = random.randint(1, 6)
 
-total = roll_one + roll_two
-
-if roll_one == roll_two:
-        double_user = "yes"
-
-print("{} no")
-
-# return total, double_user
 
 
 # At start of game, the scores are zero
@@ -35,15 +37,11 @@ comp_start = initial_points("computer")
 user_points = user_start[0]
 comp_points = comp_start[0]
 
-double_user = user_points[1]
+double_user = user_start[1]
 
 # Let the user know if they qualify for double points
 if double_user == "yes":
     print("Great news - if you win, you will earn double points!")
-
-while comp_points < 13 and user_points < 13:
-    # roll the dice for the computer
-    comp_one = random.randint(1, 6)
 
 # assume user goes first...
 first = "User"
@@ -73,44 +71,45 @@ while player_1_points < 13 and player_2_points < 13:
     player_1_roll = random.randint(1, 6)
     player_1_points += player_1_roll
 
-    print(f"{second}: Rolled a {player_2_roll} - has {player_2_points} points")
+    print(f"{second}: Rolled a {player_1_roll} - has {player_1_points} points")
 
     # if the first person's score is over 13, end the round
     if player_1_points >= 13:
         break
 
-        # second person rolls the dice (and score is updated)
-        player_2_roll = random.randint(1, 6)
-        player_1_points += player_1_roll
+    # second person rolls the dice (and score is updated)
+    player_2_roll = random.randint(1, 6)
+    player_1_points += player_1_roll
 
-        print(f"{second}: Rolled a {player_2_roll} - has {player_2_points} points")
+    print(f"{second}: Rolled a {player_2_roll} - has {player_2_points} points")
 
-        print(f"{first}: {player_1_points}  |  {second} {player_2_points}")
+    print(f"{first}: {player_1_points}  |  {second} {player_1_points}")
 
     # end of round
 
-    # associate player points with the user on the computer
-    user_points = player_1_points
-    comp_points = player_2_points
+# associate player points with the user on the computer
+user_points = player_1_points
+comp_points = player_2_points
 
-    if first == "Computer":
-        user_points, comp_points = comp_points, user_points
+# switch the user and computer points if the computer went first
+if first == "Computer":
+    user_points, comp_points = comp_points, user_points
 
-    # work out who won...
-    if user_points > comp_points:
-        winner = "user"
-    else:
-        winner = "computer"
+# work out who won...
+if user_points > comp_points:
+    winner = "user"
+else:
+    winner = "computer"
 
-    round_feedback = f"The {winner} won."
+round_feedback = f"The {winner} won."
 
-    # double user points if eligible
-    if winner == "user" and double_user == "yes":
-        user_points = user_points
+# double user points if eligible
+if winner == "user" and double_user == "yes":
+    user_points = user_points
 
-        # output round results
-        make_statement("Round Results", "🦡")
-        print("\Round Results")
-        print(f"User Points: {user_points} | Computer Points: {comp_points}")
-        print(Round_feedback)
-        print()
+    # output round results
+    make_statement("Round Results", "🦡")
+    print("\Round Results")
+    print(f"User Points: {user_points} | Computer Points: {comp_points}")
+    print(round_feedback)
+    print()

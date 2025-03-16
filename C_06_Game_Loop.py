@@ -18,7 +18,9 @@ while comp_score < game_goal and user_score < game_goal:
 
     # show overall scores (add this to rounds loop)
     print("*** Game Update ***")   # replace with call to statement generator
-
+    print(f"User Score: {user_score}  |  Computer Score {comp_score}")
 
     # end of entire game, output final results
-    print("WE love it")
+    print()
+    if user_score > comp_score:
+        print()
